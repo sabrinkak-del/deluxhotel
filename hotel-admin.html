@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מערכת ניהול - DELUX HOTEL</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Heebo:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #c9a96e;
+            --accent: #16213e;
+            --light: #f4f6f8;
+            --success: #2ecc71;
+            --warning: #f1c40f;
+            --danger: #e74c3c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Heebo', sans-serif;
+            background-color: var(--light);
+            color: var(--primary);
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background-color: var(--primary);
+            color: white;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            position: fixed;
+            height: 100%;
+            right: 0;
+            top: 0;
+            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 1.5rem;
+        }
+
+        .nav-items {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .nav-item {
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            background-color: rgba(201, 169, 110, 0.2);
+            color: var(--secondary);
+        }
+
+        .nav-item i {
+            font-size: 1.1rem;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-right: 250px;
+            width: 100%;
+            padding: 2.5rem;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            background-color: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .stat-info h3 {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-info p {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-icon {
+            font-size: 2rem;
+            color: var(--secondary);
+            opacity: 0.2;
+        }
+
+        /* Booking Table */
+        .table-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .table-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-refresh {
+            background: var(--light);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-refresh:hover {
+            background: #e0e0e0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            text-align: right;
+            padding: 1rem 1.5rem;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            color: #666;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        tr:not(:last-child) td {
+            border-bottom: 1px solid #eee;
+        }
+
+        tr:hover {
+            background-color: #fcfcfc;
+        }
+
+        .status-badge {
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .status-confirmed {
+            background-color: rgba(46, 204, 113, 0.15);
+            color: var(--success);
+        }
+
+        .status-pending {
+            background-color: rgba(241, 196, 15, 0.15);
+            color: var(--warning);
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #888;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .action-btn:hover {
+            color: var(--secondary);
+        }
+
+        .empty-state {
+            padding: 3rem;
+            text-align: center;
+            color: #888;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 70px;
+                padding: 1rem;
+            }
+
+            .sidebar .logo,
+            .sidebar span {
+                display: none;
+            }
+
+            .main-content {
+                margin-right: 70px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="logo">ADMIN</div>
+        <ul class="nav-items">
+            <li class="nav-item active">
+                <i>📊</i> <span>דאשבורד</span>
+            </li>
+            <li class="nav-item">
+                <i>📅</i> <span>הזמנות</span>
+            </li>
+            <li class="nav-item">
+                <i>🛏️</i> <span>חדרים</span>
+            </li>
+            <li class="nav-item">
+                <i>👥</i> <span>אורחים</span>
+            </li>
+            <li class="nav-item">
+                <i>⚙️</i> <span>הגדרות</span>
+            </li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="header">
+            <div>
+                <h1>ניהול הזמנות</h1>
+                <p style="color: #666;">ברוך הבא, מנהל המלון</p>
+            </div>
+            <div class="user-profile">
+                <span>Admin User</span>
+                <div class="avatar">A</div>
+            </div>
+        </header>
+
+        <!-- Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-info">
+                    <h3>סה"כ הזמנות</h3>
+                    <p id="total-bookings">0</p>
+                </div>
+                <div class="stat-icon">📅</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-info">
+                    <h3>הכנסות החודש</h3>
+                    <p>₪45,200</p>
+                </div>
+                <div class="stat-icon">💰</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-info">
+                    <h3>תפוסה</h3>
+                    <p>85%</p>
+                </div>
+                <div class="stat-icon">📈</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-info">
+                    <h3>חדרים פנויים</h3>
+                    <p>4</p>
+                </div>
+                <div class="stat-icon">🛏️</div>
+            </div>
+        </div>
+
+        <!-- Recent Bookings Table -->
+        <div class="table-container">
+            <div class="table-header">
+                <h3>הזמנות אחרונות</h3>
+                <button class="btn-refresh" onclick="loadBookings()">↻ רענן</button>
+            </div>
+            <table id="bookings-table">
+                <thead>
+                    <tr>
+                        <th># הזמנה</th>
+                        <th>שם האורח</th>
+                        <th>סוג חדר</th>
+                        <th>צ'ק-אין</th>
+                        <th>צ'ק-אאוט</th>
+                        <th>סטטוס</th>
+                        <th>פעולות</th>
+                    </tr>
+                </thead>
+                <tbody id="bookings-body">
+                    <!-- Rows will be populated by JS -->
+                </tbody>
+            </table>
+            <div id="no-data" class="empty-state" style="display: none;">
+                אין הזמנות חדשות במערכת.
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Load bookings from LocalStorage
+        function loadBookings() {
+            const bookings = JSON.parse(localStorage.getItem('delux_bookings') || '[]');
+            const tbody = document.getElementById('bookings-body');
+            const noData = document.getElementById('no-data');
+            const totalCount = document.getElementById('total-bookings');
+
+            tbody.innerHTML = '';
+            totalCount.innerText = bookings.length;
+
+            if (bookings.length === 0) {
+                noData.style.display = 'block';
+                return;
+            }
+
+            noData.style.display = 'none';
+
+            bookings.forEach(booking => {
+                const tr = document.createElement('tr');
+
+                // Translate Room Type
+                let roomName = booking.roomType;
+                if (roomName === 'deluxe') roomName = 'דלוקס סוויטה';
+                if (roomName === 'premium') roomName = 'פרימיום';
+                if (roomName === 'royal') roomName = 'רויאל פנטהאוז';
+                if (roomName === 'all') roomName = 'כללי';
+
+                tr.innerHTML = `
+                    <td style="font-family: monospace; font-weight: bold;">${booking.id}</td>
+                    <td>
+                        <div style="font-weight: 500;">${booking.guestName}</div>
+                        <div style="font-size: 0.8rem; color: #888;">${booking.phone}</div>
+                    </td>
+                    <td>${roomName}</td>
+                    <td>${booking.checkin || '-'}</td>
+                    <td>${booking.checkout || '-'}</td>
+                    <td><span class="status-badge status-confirmed">${booking.status}</span></td>
+                    <td>
+                        <button class="action-btn" title="ערוך">✏️</button>
+                        <button class="action-btn" title="מחק" onclick="deleteBooking('${booking.id}')">🗑️</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function deleteBooking(id) {
+            if (confirm('האם למחוק את ההזמנה?')) {
+                let bookings = JSON.parse(localStorage.getItem('delux_bookings') || '[]');
+                bookings = bookings.filter(b => b.id !== id);
+                localStorage.setItem('delux_bookings', JSON.stringify(bookings));
+                loadBookings();
+            }
+        }
+
+        // Add some dummy data if empty for demo purposes
+        function initDemoData() {
+            if (!localStorage.getItem('delux_bookings')) {
+                const demoData = [
+                    {
+                        id: 'BK-1001',
+                        guestName: 'ישראל ישראלי',
+                        phone: '050-1234567',
+                        roomType: 'deluxe',
+                        checkin: '2024-03-20',
+                        checkout: '2024-03-24',
+                        status: 'מאושר'
+                    },
+                    {
+                        id: 'BK-1002',
+                        guestName: 'שרה כהן',
+                        phone: '052-9876543',
+                        roomType: 'royal',
+                        checkin: '2024-04-01',
+                        checkout: '2024-04-05',
+                        status: 'מאושר'
+                    }
+                ];
+                localStorage.setItem('delux_bookings', JSON.stringify(demoData));
+            }
+        }
+
+        // Initialize
+        initDemoData();
+        loadBookings();
+    </script>
+</body>
+
+</html>
