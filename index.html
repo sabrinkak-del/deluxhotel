@@ -1023,7 +1023,7 @@
                     </div>
                     <div class="room-price">
                         <div class="price">₪899 <span>/ לילה</span></div>
-                        <button class="btn-primary">הזמינו עכשיו</button>
+                        <button class="btn-primary" onclick="window.location.href='/booking.html'">הזמינו עכשיו</button>
                     </div>
                 </div>
             </div>
@@ -1042,7 +1042,7 @@
                     </div>
                     <div class="room-price">
                         <div class="price">₪1,299 <span>/ לילה</span></div>
-                        <button class="btn-primary">הזמינו עכשיו</button>
+                        <button class="btn-primary" onclick="window.location.href='/booking.html'">הזמינו עכשיו</button>
                     </div>
                 </div>
             </div>
@@ -1061,7 +1061,7 @@
                     </div>
                     <div class="room-price">
                         <div class="price">₪2,499 <span>/ לילה</span></div>
-                        <button class="btn-primary">הזמינו עכשיו</button>
+                        <button class="btn-primary" onclick="window.location.href='/booking.html'">הזמינו עכשיו</button>
                     </div>
                 </div>
             </div>
@@ -1337,14 +1337,13 @@
             const checkin = document.getElementById('checkin').value;
             const checkout = document.getElementById('checkout').value;
             const guests = document.getElementById('guests').value;
-            const roomType = document.getElementById('room-type').value;
 
             if (!checkin || !checkout) {
                 alert('אנא בחרו תאריכי כניסה ויציאה');
                 return;
             }
 
-            alert(`מחפש חדרים זמינים:\nכניסה: ${checkin}\nיציאה: ${checkout}\nאורחים: ${guests}\nסוג חדר: ${roomType}\n\nבקרוב תועברו למערכת ההזמנות!`);
+            window.location.href = `/booking.html?checkin=${checkin}&checkout=${checkout}&guests=${guests}`;
         }
 
         // Handle Contact Form Submit
