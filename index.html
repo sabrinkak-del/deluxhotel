@@ -248,70 +248,6 @@
             margin-right: auto;
         }
 
-        /* Booking Section */
-        .booking-section {
-            background: white;
-            border-radius: 20px;
-            padding: 3rem;
-            box-shadow: 0 10px 50px rgba(0,0,0,0.08);
-            margin-top: -100px;
-            position: relative;
-            z-index: 10;
-        }
-
-        .booking-form {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .form-group label {
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--primary);
-        }
-
-        .form-group input,
-        .form-group select {
-            padding: 1rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            font-family: 'Heebo', sans-serif;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--secondary);
-        }
-
-        .search-btn {
-            background: var(--secondary);
-            color: white;
-            padding: 1.2rem 3rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            grid-column: 1 / -1;
-        }
-
-        .search-btn:hover {
-            background: var(--primary);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(26, 26, 46, 0.3);
-        }
-
         /* Rooms Section */
         .rooms-grid {
             display: grid;
@@ -903,10 +839,6 @@
                 grid-template-columns: 1fr;
             }
 
-            .booking-form {
-                grid-template-columns: 1fr;
-            }
-
             section {
                 padding: 4rem 5%;
             }
@@ -952,7 +884,7 @@
                 <li><a href="#gallery">גלריה</a></li>
                 <li><a href="#contact">יצירת קשר</a></li>
             </ul>
-            <button class="book-now-btn" onclick="scrollToBooking()">הזמינו עכשיו</button>
+            <button class="book-now-btn" onclick="window.location.href='./booking.html'">הזמינו עכשיו</button>
             <button class="mobile-menu-btn">☰</button>
         </nav>
     </header>
@@ -964,43 +896,10 @@
             <h1>DELUX HOTEL</h1>
             <p>חוויית יוקרה עם נוף עוצר נשימה לים התיכון</p>
             <div class="hero-buttons">
-                <button class="btn-primary" onclick="scrollToBooking()">הזמינו חדר</button>
+                <button class="btn-primary" onclick="window.location.href='./booking.html'">הזמינו חדר</button>
                 <button class="btn-secondary" onclick="scrollToRooms()">גלו את החדרים</button>
             </div>
         </div>
-    </section>
-
-    <!-- Booking Section -->
-    <section class="booking-section">
-        <div class="booking-form">
-            <div class="form-group">
-                <label for="checkin">תאריך כניסה</label>
-                <input type="date" id="checkin" required>
-            </div>
-            <div class="form-group">
-                <label for="checkout">תאריך יציאה</label>
-                <input type="date" id="checkout" required>
-            </div>
-            <div class="form-group">
-                <label for="guests">מספר אורחים</label>
-                <select id="guests">
-                    <option value="1">1 אורח</option>
-                    <option value="2">2 אורחים</option>
-                    <option value="3">3 אורחים</option>
-                    <option value="4">4 אורחים</option>
-                    <option value="5">5+ אורחים</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="room-type">סוג חדר</label>
-                <select id="room-type">
-                    <option value="deluxe">דלוקס סוויטה</option>
-                    <option value="premium">פרימיום עם נוף לים</option>
-                    <option value="royal">רויאל פנטהאוז</option>
-                </select>
-            </div>
-        </div>
-        <button class="search-btn" onclick="searchRooms()">🔍 חפשו זמינות ומחירים</button>
     </section>
 
     <!-- Rooms Section -->
@@ -1322,28 +1221,9 @@
     <a href="https://wa.me/9720521234567" target="_blank" class="whatsapp-float">💬</a>
 
     <script>
-        // Scroll to Booking
-        function scrollToBooking() {
-            document.querySelector('.booking-section').scrollIntoView({ behavior: 'smooth' });
-        }
-
         // Scroll to Rooms
         function scrollToRooms() {
             document.querySelector('#rooms').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Search Rooms
-        function searchRooms() {
-            const checkin = document.getElementById('checkin').value;
-            const checkout = document.getElementById('checkout').value;
-            const guests = document.getElementById('guests').value;
-
-            if (!checkin || !checkout) {
-                alert('אנא בחרו תאריכי כניסה ויציאה');
-                return;
-            }
-
-            window.location.href = `./booking.html?checkin=${checkin}&checkout=${checkout}&guests=${guests}`;
         }
 
         // Handle Contact Form Submit
@@ -1356,12 +1236,12 @@
         // Scroll Reveal Animation
         function reveal() {
             const reveals = document.querySelectorAll('.reveal');
-            
+
             reveals.forEach(element => {
                 const windowHeight = window.innerHeight;
                 const elementTop = element.getBoundingClientRect().top;
                 const elementVisible = 150;
-                
+
                 if (elementTop < windowHeight - elementVisible) {
                     element.classList.add('active');
                 }
@@ -1370,19 +1250,6 @@
 
         window.addEventListener('scroll', reveal);
         reveal(); // Initial check
-
-        // Set minimum date for booking
-        const today = new Date().toISOString().split('T')[0];
-        document.getElementById('checkin').setAttribute('min', today);
-        document.getElementById('checkout').setAttribute('min', today);
-
-        // Update checkout minimum date when checkin changes
-        document.getElementById('checkin').addEventListener('change', function() {
-            const checkinDate = new Date(this.value);
-            checkinDate.setDate(checkinDate.getDate() + 1);
-            const minCheckout = checkinDate.toISOString().split('T')[0];
-            document.getElementById('checkout').setAttribute('min', minCheckout);
-        });
     </script>
 </body>
 </html>
