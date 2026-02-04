@@ -13,6 +13,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         booking: resolve(__dirname, 'booking.html'),
+        admin: resolve(__dirname, 'admin.html'),
       },
     },
   },
