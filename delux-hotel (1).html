@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DELUX HOTEL - מלון יוקרה עם נוף לים</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #c9a96e;
+            --accent: #e4d4b8;
+            --light: #f8f5f0;
+            --dark: #0f0f1e;
+            --text: #2d2d2d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Heebo', sans-serif;
+            color: var(--text);
+            background: var(--light);
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--secondary);
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .book-now-btn {
+            background: var(--secondary);
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .book-now-btn:hover {
+            background: var(--accent);
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(201, 169, 110, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #1a1a2e 0%, #16213e 50%, #1a1a2e 100%);
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(201, 169, 110, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(228, 212, 184, 0.1) 0%, transparent 50%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+            text-shadow: 2px 2px 20px rgba(0,0,0,0.3);
+            letter-spacing: 3px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--secondary);
+            color: white;
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(201, 169, 110, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 1.2rem 3rem;
+            border: 2px solid white;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Booking Section */
+        .booking-section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.08);
+            margin-top: -100px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .booking-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: 'Heebo', sans-serif;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+
+        .search-btn {
+            background: var(--secondary);
+            color: white;
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            grid-column: 1 / -1;
+        }
+
+        .search-btn:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(26, 26, 46, 0.3);
+        }
+
+        /* Rooms Section */
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .room-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .room-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+        }
+
+        .room-image {
+            width: 100%;
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .room-card:nth-child(1) .room-image {
+            background-image: url('https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800&q=80');
+        }
+
+        .room-card:nth-child(2) .room-image {
+            background-image: url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80');
+        }
+
+        .room-card:nth-child(3) .room-image {
+            background-image: url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80');
+        }
+
+        .room-details {
+            padding: 2rem;
+        }
+
+        .room-details h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .room-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-tag {
+            background: var(--accent);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .room-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 500px;
+            background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80');
+            background-size: cover;
+            background-position: center;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .about-feature-icon {
+            font-size: 2rem;
+        }
+
+        .about-feature-text h4 {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .about-feature-text p {
+            font-size: 0.9rem;
+            color: #777;
+            margin: 0;
+        }
+
+        /* Amenities Section */
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .amenity-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .amenity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        .amenity-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .amenity-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary);
+        }
+
+        .amenity-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Reviews Section */
+        .reviews-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .review-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            position: relative;
+        }
+
+        .review-card::before {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 5rem;
+            color: var(--accent);
+            font-family: 'Playfair Display', serif;
+            opacity: 0.3;
+        }
+
+        .stars {
+            color: var(--secondary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .review-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        .reviewer {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .reviewer-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .reviewer-info h4 {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .reviewer-info p {
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            height: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item:nth-child(1) {
+            background-image: url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80');
+        }
+
+        .gallery-item:nth-child(2) {
+            background-image: url('https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=800&q=80');
+        }
+
+        .gallery-item:nth-child(3) {
+            background-image: url('https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800&q=80');
+        }
+
+        .gallery-item:nth-child(4) {
+            background-image: url('https://images.unsplash.com/photo-1574643156929-51fa098b0394?w=800&q=80');
+        }
+
+        .gallery-item:nth-child(5) {
+            background-image: url('https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80');
+        }
+
+        .gallery-item:nth-child(6) {
+            background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80');
+        }
+
+        /* Location Section */
+        .location-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 500px;
+            background-image: url('https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&q=80');
+            background-size: cover;
+            background-position: center;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .map-container::after {
+            content: '📍 DELUX HOTEL';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            background: rgba(26, 26, 46, 0.9);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+        .location-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .location-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .location-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .location-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .location-item-content h4 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .location-item-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--primary);
+            color: white;
+            padding: 6rem 5%;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .contact-info h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-method:hover {
+            background: rgba(201, 169, 110, 0.2);
+            transform: translateX(-5px);
+        }
+
+        .contact-method-icon {
+            font-size: 2rem;
+        }
+
+        .contact-method-info h4 {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-method-info p {
+            opacity: 0.8;
+        }
+
+        .contact-form-container {
+            background: rgba(255,255,255,0.05);
+            padding: 3rem;
+            border-radius: 15px;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 1rem;
+            border: 2px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            font-family: 'Heebo', sans-serif;
+        }
+
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+            background: rgba(255,255,255,0.08);
+        }
+
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--secondary);
+            color: white;
+            padding: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: var(--accent);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .footer-text {
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            font-size: 2rem;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            opacity: 0.6;
+            font-size: 0.9rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* WhatsApp Float Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: #25d366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            font-size: 2rem;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .about-content,
+            .location-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .booking-form {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 4rem 5%;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease;
+        }
+
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">DELUX HOTEL</div>
+            <ul class="nav-links">
+                <li><a href="#home">בית</a></li>
+                <li><a href="#rooms">חדרים</a></li>
+                <li><a href="#about">אודות</a></li>
+                <li><a href="#amenities">מתקנים</a></li>
+                <li><a href="#gallery">גלריה</a></li>
+                <li><a href="#contact">יצירת קשר</a></li>
+            </ul>
+            <button class="book-now-btn" onclick="scrollToBooking()">הזמינו עכשיו</button>
+            <button class="mobile-menu-btn">☰</button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-content">
+            <h1>DELUX HOTEL</h1>
+            <p>חוויית יוקרה עם נוף עוצר נשימה לים התיכון</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="scrollToBooking()">הזמינו חדר</button>
+                <button class="btn-secondary" onclick="scrollToRooms()">גלו את החדרים</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking-section">
+        <div class="booking-form">
+            <div class="form-group">
+                <label for="checkin">תאריך כניסה</label>
+                <input type="date" id="checkin" required>
+            </div>
+            <div class="form-group">
+                <label for="checkout">תאריך יציאה</label>
+                <input type="date" id="checkout" required>
+            </div>
+            <div class="form-group">
+                <label for="guests">מספר אורחים</label>
+                <select id="guests">
+                    <option value="1">1 אורח</option>
+                    <option value="2">2 אורחים</option>
+                    <option value="3">3 אורחים</option>
+                    <option value="4">4 אורחים</option>
+                    <option value="5">5+ אורחים</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="room-type">סוג חדר</label>
+                <select id="room-type">
+                    <option value="deluxe">דלוקס סוויטה</option>
+                    <option value="premium">פרימיום עם נוף לים</option>
+                    <option value="royal">רויאל פנטהאוז</option>
+                </select>
+            </div>
+        </div>
+        <button class="search-btn" onclick="searchRooms()">🔍 חפשו זמינות ומחירים</button>
+    </section>
+
+    <!-- Rooms Section -->
+    <section id="rooms">
+        <h2 class="section-title">החדרים שלנו</h2>
+        <p class="section-subtitle">בחרו מתוך מגוון חדרים מעוצבים בקפידה עם נוף מרהיב</p>
+        
+        <div class="rooms-grid">
+            <div class="room-card reveal">
+                <div class="room-image"></div>
+                <div class="room-details">
+                    <h3>דלוקס סוויטה</h3>
+                    <p>חדר מפואר עם נוף פנורמי לים, מרפסת פרטית ומיטת קינג סייז</p>
+                    <div class="room-features">
+                        <span class="feature-tag">45 מ"ר</span>
+                        <span class="feature-tag">מרפסת פרטית</span>
+                        <span class="feature-tag">נוף לים</span>
+                        <span class="feature-tag">Wi-Fi חינם</span>
+                        <span class="feature-tag">מיזוג אוויר</span>
+                    </div>
+                    <div class="room-price">
+                        <div class="price">₪899 <span>/ לילה</span></div>
+                        <button class="btn-primary">הזמינו עכשיו</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="room-card reveal">
+                <div class="room-image"></div>
+                <div class="room-details">
+                    <h3>פרימיום עם נוף לים</h3>
+                    <p>חדר מרווח במיוחד עם סלון נפרד וג'קוזי פרטי</p>
+                    <div class="room-features">
+                        <span class="feature-tag">60 מ"ר</span>
+                        <span class="feature-tag">ג'קוזי פרטי</span>
+                        <span class="feature-tag">סלון נפרד</span>
+                        <span class="feature-tag">מיני בר</span>
+                        <span class="feature-tag">שירות חדרים 24/7</span>
+                    </div>
+                    <div class="room-price">
+                        <div class="price">₪1,299 <span>/ לילה</span></div>
+                        <button class="btn-primary">הזמינו עכשיו</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="room-card reveal">
+                <div class="room-image"></div>
+                <div class="room-details">
+                    <h3>רויאל פנטהאוז</h3>
+                    <p>הסוויטה היוקרתית ביותר עם בריכה פרטית וגג פנורמי</p>
+                    <div class="room-features">
+                        <span class="feature-tag">120 מ"ר</span>
+                        <span class="feature-tag">בריכה פרטית</span>
+                        <span class="feature-tag">2 חדרי שינה</span>
+                        <span class="feature-tag">גג פנורמי</span>
+                        <span class="feature-tag">שף פרטי</span>
+                    </div>
+                    <div class="room-price">
+                        <div class="price">₪2,499 <span>/ לילה</span></div>
+                        <button class="btn-primary">הזמינו עכשיו</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="about-content">
+            <div class="about-image reveal"></div>
+            <div class="about-text reveal">
+                <h3>ברוכים הבאים ל-DELUX HOTEL</h3>
+                <p>מלון DELUX הוא יותר מסתם מקום לינה - זו חוויה של יוקרה, נוחות ואירוח ברמה עולמית. ממוקם על שפת הים התיכון, אנחנו מציעים שילוב מושלם של עיצוב מודרני, שירות אישי ונופים עוצרי נשימה.</p>
+                <p>כל חדר אצלנו תוכנן בקפידה כדי להעניק לכם את החוויה המושלמת - ממיטות יוקרתיות ועד טכנולוגיה חכמה בכל פינה. הצוות המסור שלנו זמין 24/7 כדי לוודא שהשהות שלכם תהיה בלתי נשכחת.</p>
+                
+                <div class="about-features">
+                    <div class="about-feature">
+                        <span class="about-feature-icon">🏆</span>
+                        <div class="about-feature-text">
+                            <h4>מצוינות בשירות</h4>
+                            <p>דירוג 5 כוכבים</p>
+                        </div>
+                    </div>
+                    <div class="about-feature">
+                        <span class="about-feature-icon">🌊</span>
+                        <div class="about-feature-text">
+                            <h4>חוף פרטי</h4>
+                            <p>גישה ישירה לים</p>
+                        </div>
+                    </div>
+                    <div class="about-feature">
+                        <span class="about-feature-icon">🍽️</span>
+                        <div class="about-feature-text">
+                            <h4>מסעדה גורמה</h4>
+                            <p>שף עטור פרסים</p>
+                        </div>
+                    </div>
+                    <div class="about-feature">
+                        <span class="about-feature-icon">💆</span>
+                        <div class="about-feature-text">
+                            <h4>ספא יוקרתי</h4>
+                            <p>טיפולים מפנקים</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities Section -->
+    <section id="amenities">
+        <h2 class="section-title">מתקנים ושירותים</h2>
+        <p class="section-subtitle">כל מה שאתם צריכים לחוויה מושלמת</p>
+        
+        <div class="amenities-grid">
+            <div class="amenity-card reveal">
+                <div class="amenity-icon">🏊</div>
+                <h3>בריכת אינסוף</h3>
+                <p>בריכה מחוממת עם נוף פנורמי לים, כיסאות שיזוף ושירות בר</p>
+            </div>
+            <div class="amenity-card reveal">
+                <div class="amenity-icon">💪</div>
+                <h3>חדר כושר</h3>
+                <p>מתקנים מתקדמים, מאמנים אישיים וחדרי יוגה</p>
+            </div>
+            <div class="amenity-card reveal">
+                <div class="amenity-icon">🍴</div>
+                <h3>מסעדה גורמה</h3>
+                <p>אוכל בינלאומי ומקומי מעולה, ארוחות בוקר מפנקות</p>
+            </div>
+            <div class="amenity-card reveal">
+                <div class="amenity-icon">🧖</div>
+                <h3>ספא מלא</h3>
+                <p>עיסויים, טיפולי פנים, סאונה וחמאם טורקי</p>
+            </div>
+            <div class="amenity-card reveal">
+                <div class="amenity-icon">🚗</div>
+                <h3>חניה פרטית</h3>
+                <p>חניה מאובטחת ושירות ולט חינם</p>
+            </div>
+            <div class="amenity-card reveal">
+                <div class="amenity-icon">📶</div>
+                <h3>Wi-Fi מהיר</h3>
+                <p>אינטרנט אלחוטי מהיר ויציב בכל המלון</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews">
+        <h2 class="section-title">מה האורחים אומרים</h2>
+        <p class="section-subtitle">חוויות אמיתיות מאורחים מרוצים</p>
+        
+        <div class="reviews-container">
+            <div class="review-card reveal">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="review-text">חוויה מדהימה! החדר היה מושלם, הנוף עוצר נשימה והשירות ברמה הכי גבוהה. בהחלט נחזור שוב!</p>
+                <div class="reviewer">
+                    <div class="reviewer-avatar">ד</div>
+                    <div class="reviewer-info">
+                        <h4>דנה כהן</h4>
+                        <p>ספטמבר 2024</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="review-card reveal">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="review-text">המלון הכי טוב שהייתי בו בחיים! כל פרט מושלם, הצוות מדהים והאוכל ברמה גבוהה מאוד. ממליץ בחום!</p>
+                <div class="reviewer">
+                    <div class="reviewer-avatar">י</div>
+                    <div class="reviewer-info">
+                        <h4>יוסי לוי</h4>
+                        <p>אוקטובר 2024</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="review-card reveal">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="review-text">מושלם לחופשה רומנטית! הסוויטה עם הג'קוזי הייתה פנטסטית, הספא מפנק והמסעדה טעימה מאוד.</p>
+                <div class="reviewer">
+                    <div class="reviewer-avatar">מ</div>
+                    <div class="reviewer-info">
+                        <h4>מיכל אברהם</h4>
+                        <p>נובמבר 2024</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <h2 class="section-title">גלריית התמונות</h2>
+        <p class="section-subtitle">צצו במלון שלנו דרך התמונות</p>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item reveal"></div>
+            <div class="gallery-item reveal"></div>
+            <div class="gallery-item reveal"></div>
+            <div class="gallery-item reveal"></div>
+            <div class="gallery-item reveal"></div>
+            <div class="gallery-item reveal"></div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location">
+        <h2 class="section-title">מיקום ודרכי הגעה</h2>
+        <p class="section-subtitle">מצאו אותנו בלב אזור החוף המדהים</p>
+        
+        <div class="location-content">
+            <div class="map-container reveal"></div>
+            <div class="location-info reveal">
+                <h3>איך מגיעים?</h3>
+                <div class="location-details">
+                    <div class="location-item">
+                        <span class="location-icon">📍</span>
+                        <div class="location-item-content">
+                            <h4>כתובת</h4>
+                            <p>רחוב החוף 123, תל אביב-יפו</p>
+                        </div>
+                    </div>
+                    <div class="location-item">
+                        <span class="location-icon">🚗</span>
+                        <div class="location-item-content">
+                            <h4>חניה</h4>
+                            <p>חניה פרטית מאובטחת זמינה לכל האורחים, שירות ולט חינם 24/7</p>
+                        </div>
+                    </div>
+                    <div class="location-item">
+                        <span class="location-icon">🚌</span>
+                        <div class="location-item-content">
+                            <h4>תחבורה ציבורית</h4>
+                            <p>קווי אוטובוס 4, 5, 18 עוצרים במרחק 2 דקות הליכה מהמלון</p>
+                        </div>
+                    </div>
+                    <div class="location-item">
+                        <span class="location-icon">🏖️</span>
+                        <div class="location-item-content">
+                            <h4>אטרקציות בסביבה</h4>
+                            <p>חוף הים - 1 דקה, הטיילת - 5 דקות, מרכז העיר - 10 דקות</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="contact-content">
+            <div class="contact-info reveal">
+                <h2>צרו קשר</h2>
+                <p>נשמח לענות על כל שאלה ולעזור לכם לתכנן את החופשה המושלמת</p>
+                
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <span class="contact-method-icon">📞</span>
+                        <div class="contact-method-info">
+                            <h4>טלפון</h4>
+                            <p>03-1234567</p>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <span class="contact-method-icon">💬</span>
+                        <div class="contact-method-info">
+                            <h4>וואטסאפ</h4>
+                            <p>052-1234567</p>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <span class="contact-method-icon">✉️</span>
+                        <div class="contact-method-info">
+                            <h4>אימייל</h4>
+                            <p>info@deluxhotel.co.il</p>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <span class="contact-method-icon">⏰</span>
+                        <div class="contact-method-info">
+                            <h4>שעות פעילות</h4>
+                            <p>24/7 - תמיד זמינים עבורכם</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form-container reveal">
+                <form class="contact-form" onsubmit="handleSubmit(event)">
+                    <input type="text" placeholder="שם מלא" required>
+                    <input type="email" placeholder="אימייל" required>
+                    <input type="tel" placeholder="טלפון" required>
+                    <textarea placeholder="ההודעה שלכם..." required></textarea>
+                    <button type="submit" class="submit-btn">שלחו הודעה</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">DELUX HOTEL</div>
+            <p class="footer-text">חוויית יוקרה עם נוף לים התיכון</p>
+            <div class="social-links">
+                <a href="#" class="social-link">📘</a>
+                <a href="#" class="social-link">📸</a>
+                <a href="#" class="social-link">🐦</a>
+                <a href="#" class="social-link">💼</a>
+            </div>
+            <p class="copyright">© 2024 DELUX HOTEL. כל הזכויות שמורות.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/9720521234567" target="_blank" class="whatsapp-float">💬</a>
+
+    <script>
+        // Scroll to Booking
+        function scrollToBooking() {
+            document.querySelector('.booking-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Scroll to Rooms
+        function scrollToRooms() {
+            document.querySelector('#rooms').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Search Rooms
+        function searchRooms() {
+            const checkin = document.getElementById('checkin').value;
+            const checkout = document.getElementById('checkout').value;
+            const guests = document.getElementById('guests').value;
+            const roomType = document.getElementById('room-type').value;
+
+            if (!checkin || !checkout) {
+                alert('אנא בחרו תאריכי כניסה ויציאה');
+                return;
+            }
+
+            alert(`מחפש חדרים זמינים:\nכניסה: ${checkin}\nיציאה: ${checkout}\nאורחים: ${guests}\nסוג חדר: ${roomType}\n\nבקרוב תועברו למערכת ההזמנות!`);
+        }
+
+        // Handle Contact Form Submit
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert('תודה על פנייתכם! נחזור אליכם בהקדם האפשרי.');
+            e.target.reset();
+        }
+
+        // Scroll Reveal Animation
+        function reveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', reveal);
+        reveal(); // Initial check
+
+        // Set minimum date for booking
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('checkin').setAttribute('min', today);
+        document.getElementById('checkout').setAttribute('min', today);
+
+        // Update checkout minimum date when checkin changes
+        document.getElementById('checkin').addEventListener('change', function() {
+            const checkinDate = new Date(this.value);
+            checkinDate.setDate(checkinDate.getDate() + 1);
+            const minCheckout = checkinDate.toISOString().split('T')[0];
+            document.getElementById('checkout').setAttribute('min', minCheckout);
+        });
+    </script>
+</body>
+</html>
