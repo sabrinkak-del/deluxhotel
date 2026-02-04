@@ -294,8 +294,38 @@ async function submitBooking(e) {
 
         if (error) throw error;
 
+        const bookingIdShort = data.id.substring(0, 8).toUpperCase();
+
+        try {
+            const emailResponse = await fetch(`${supabaseUrl}/functions/v1/send-booking-email`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${supabaseKey}`
+                },
+                body: JSON.stringify({
+                    guestName,
+                    guestEmail,
+                    bookingId: bookingIdShort,
+                    roomName: selectedRoom.name,
+                    checkInDate: searchParams.checkin,
+                    checkOutDate: searchParams.checkout,
+                    numGuests: searchParams.guests,
+                    nights: selectedRoom.nights,
+                    totalPrice: selectedRoom.totalPrice,
+                    specialRequests: specialRequests || undefined
+                })
+            });
+
+            if (!emailResponse.ok) {
+                console.error('Failed to send confirmation email');
+            }
+        } catch (emailError) {
+            console.error('Error sending email:', emailError);
+        }
+
         document.getElementById('bookingFormSection').classList.remove('active');
-        document.getElementById('bookingId').textContent = data.id.substring(0, 8).toUpperCase();
+        document.getElementById('bookingId').textContent = bookingIdShort;
         document.getElementById('successMessage').classList.add('active');
         document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
 
